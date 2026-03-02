@@ -1,0 +1,17 @@
+{
+  "image_digests": {
+    "green-agent": "ghcr.io/arnavsinghvi11/officeqa-judge@sha256:ec0a09fa4a4be4219b890689da3a8d05dc6613365a231d0df1d3761b97afcb02",
+    "officeqa_agent": "public.ecr.aws/d9m7h3k5/agentbench-finance-a2a@sha256:f9dcf5437a7699a98664383a0663c6da009edb5f93d88bfcdecdbf7c4eaf371f",
+    "agentbeats-client": "ghcr.io/agentbeats/agentbeats-client@sha256:13dfe3ef4e583a80e7ce2fe3becd0ce3b879841368a7f4fa40b6ebbabeeb014e"
+  },
+  "timestamp": "2026-03-02T16:06:24Z",
+  "github_actions": {
+    "run_url": "https://github.com/abhishec/officeqa-agentbeats-leaderboard/actions/runs/22584370081",
+    "run_logs_url": "https://api.github.com/repos/abhishec/officeqa-agentbeats-leaderboard/actions/runs/22584370081/logs",
+    "ref": "refs/heads/main",
+    "sha": "2d57911600739292d6f96697366fe5a584d8d9b8",
+    "repository_url": "https://github.com/abhishec/officeqa-agentbeats-leaderboard",
+    "workflow_ref": "abhishec/officeqa-agentbeats-leaderboard/.github/workflows/run-scenario.yml@refs/heads/main",
+    "workflow_sha": "2d57911600739292d6f96697366fe5a584d8d9b8"
+  }
+}
