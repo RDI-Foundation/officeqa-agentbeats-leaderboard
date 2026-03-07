@@ -1,0 +1,19 @@
+[green_agent]
+agentbeats_id = "agentbeater/officeqa"
+env = { LOG_LEVEL = "INFO" }
+  
+[[participants]]
+agentbeats_id = "alphadl/1688-alpha-financeagent"
+name = "officeqa_agent"
+env = {
+    OPENAI_API_KEY = "${OPENAI_API_KEY}",
+    OPENAI_API_BASE = "${OPENAI_API_BASE}",
+    OPENAI_MODEL = "${OPENAI_MODEL}"
+}
+  
+[config]
+dataset_url = "https://raw.githubusercontent.com/databricks/officeqa/main/officeqa.csv"
+num_questions = 246
+difficulty = "all"
+tolerance = 0.0
+run_id = 8
