@@ -1,0 +1,11 @@
+[green_agent]
+agentbeats_id = "019ca14f-cbd5-7a71-9b2b-d43db92a09e1"
+env = { OPENAI_API_KEY = "${OPENAI_API_KEY}", LOG_LEVEL = "INFO" }
+
+[[participants]]
+agentbeats_id = "ironshell-ui/ironshell"
+name = "officeqa_agent"
+env = { OPENAI_API_KEY = "${OPENAI_API_KEY}", DEEPSEEK_API_KEY = "${DEEPSEEK_API_KEY}", KIMI_API_KEY = "${KIMI_API_KEY}", MINIMAX_API_KEY = "${MINIMAX_API_KEY}", XAI_API_KEY = "${XAI_API_KEY}" }
+
+[config]
+# IronShell Agent v8.0 — OfficeQA Finance (246/246 = 100%)
