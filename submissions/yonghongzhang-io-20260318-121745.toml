@@ -1,0 +1,20 @@
+[green_agent]
+agentbeats_id = "019ca14f-cbd5-7a71-9b2b-d43db92a09e1"
+env = { LOG_LEVEL = "INFO" }
+
+[[participants]]
+agentbeats_id = "019d009a-ab04-7b51-b16b-85b8998092f6"
+name = "officeqa_agent"
+image = "ghcr.io/yonghongzhang-io/purple-agent-officeqa:latest"
+env = { LLM_PROVIDER = "nebius", NEBIUS_API_KEY = "${NEBIUS_API_KEY}", NEBIUS_MODEL = "deepseek-ai/DeepSeek-R1-0528", ENABLE_TOOLS = "true", ENABLE_WEB_SEARCH = "false", MAX_LLM_CALLS = "4", MAX_TOKENS = "8000" }
+
+[config]
+dataset_url = "https://raw.githubusercontent.com/databricks/officeqa/main/officeqa_full.csv"
+corpus_url = "https://github.com/databricks/officeqa/tree/main/treasury_bulletins_parsed"
+num_questions = 246
+difficulty = "all"
+tolerance = 0.0
+
+# retrigger workflow
+# retrigger after generator fix
+# explicit image override
