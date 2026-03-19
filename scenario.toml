@@ -13,4 +13,4 @@ corpus_url = "https://github.com/databricks/officeqa/tree/6aa8c32/treasury_bulle
 num_questions = 246
 difficulty = "all"
 tolerance = 0.0
-# Retrigger with proxy-mode image v4.1
+# v4.2 - syntax fix + proxy mode
