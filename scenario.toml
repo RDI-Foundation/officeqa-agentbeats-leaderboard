@@ -10,7 +10,7 @@ env = { PROXY_URL = "https://agentbeats-finance.chitacloud.dev", ENABLE_WEB_SEAR
 [config]
 dataset_url = "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv"
 corpus_url = "https://github.com/databricks/officeqa/tree/6aa8c32/treasury_bulletins_parsed"
-num_questions = 246
+num_questions = 10
 difficulty = "all"
 tolerance = 0.0
-# v4.3 - 15s proxy timeout
+# v4.4 - 30s proxy, 10 questions test run
