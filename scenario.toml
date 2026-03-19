@@ -3,9 +3,9 @@ agentbeats_id = "019ca14f-cbd5-7a71-9b2b-d43db92a09e1"
 env = { LOG_LEVEL = "INFO" }
 
 [[participants]]
-agentbeats_id = ""
+agentbeats_id = "019cb31d-4432-7500-981e-b0f8bd567aeb"
 name = "officeqa_agent"
-env = { OPENAI_API_KEY = "${OPENAI_API_KEY}" }
+env = { ANTHROPIC_API_KEY = "${ANTHROPIC_API_KEY}", LLM_PROVIDER = "anthropic", ANTHROPIC_MODEL = "claude-sonnet-4-20250514", ENABLE_WEB_SEARCH = "true" }
 
 [config]
 dataset_url = "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv"
