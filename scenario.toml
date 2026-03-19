@@ -5,7 +5,7 @@ env = { LOG_LEVEL = "INFO" }
 [[participants]]
 agentbeats_id = "019cb31d-4432-7500-981e-b0f8bd567aeb"
 name = "officeqa_agent"
-env = { ANTHROPIC_API_KEY = "${ANTHROPIC_API_KEY}", LLM_PROVIDER = "anthropic", ANTHROPIC_MODEL = "claude-sonnet-4-20250514", ENABLE_WEB_SEARCH = "true" }
+env = { PROXY_URL = "https://agentbeats-finance.chitacloud.dev", ENABLE_WEB_SEARCH = "true" }
 
 [config]
 dataset_url = "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv"
