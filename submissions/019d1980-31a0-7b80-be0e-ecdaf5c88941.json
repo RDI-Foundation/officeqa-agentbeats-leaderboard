@@ -1,0 +1,72 @@
+{
+  "manifest_version": "0.1.0",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "officeqa_agent_google_api_key": {
+        "type": "string",
+        "secret": true
+      }
+    },
+    "required": [
+      "officeqa_agent_google_api_key"
+    ],
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.1/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "dataset_url": "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv",
+          "num_questions": 246,
+          "difficulty": "all",
+          "tolerance": 0,
+          "run_id": 3
+        },
+        "participant_roles": {
+          "green": "green",
+          "purple1": "officeqa_agent"
+        },
+        "callback_urls": {
+          "green": "${bindings.green-proxy.url}"
+        }
+      }
+    },
+    "green": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/officeqa-agentbeats/refs/heads/main/amber/amber-manifest-green.json5",
+      "config": {}
+    },
+    "officeqa_agent": {
+      "manifest": "https://raw.githubusercontent.com/vk-infocusp/officeqa-leaderboard/refs/heads/main/amber-manifest.json",
+      "config": {
+        "google_api_key": "${config.officeqa_agent_google_api_key}"
+      }
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#officeqa_agent.a2a"
+    },
+    {
+      "to": "#green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "green-proxy"
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "green": "019ca14f-cbd5-7a71-9b2b-d43db92a09e1",
+      "officeqa_agent": "019d165f-1c5c-7f10-8e7d-e2982bd9191b"
+    }
+  }
+}
