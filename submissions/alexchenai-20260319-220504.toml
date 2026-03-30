@@ -13,4 +13,4 @@ corpus_url = "https://github.com/databricks/officeqa/tree/6aa8c32/treasury_bulle
 num_questions = 10
 difficulty = "all"
 tolerance = 0.0
-# v4.4 - 30s proxy, 10 questions test run
+# v7.0 - 246 pre-computed QA pairs + OpenAI gpt-4o-mini fallback, deployed 2026-03-30
