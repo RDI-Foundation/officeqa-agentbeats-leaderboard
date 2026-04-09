@@ -1,0 +1,91 @@
+{
+  "manifest_version": "0.1.0",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "solstice_finance_agent_agentbeats_llm_model": {
+        "type": "string"
+      },
+      "solstice_finance_agent_anthropic_api_key": {
+        "type": "string",
+        "secret": true
+      },
+      "solstice_finance_agent_google_api_key": {
+        "type": "string",
+        "secret": true
+      },
+      "solstice_finance_agent_openai_api_key": {
+        "type": "string",
+        "secret": true
+      },
+      "solstice_finance_agent_pinecone_api_key": {
+        "type": "string",
+        "secret": true
+      }
+    },
+    "required": [
+      "solstice_finance_agent_google_api_key"
+    ],
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.1/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "dataset_url": "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv",
+          "num_questions": 246,
+          "difficulty": "all",
+          "tolerance": 0,
+          "run_id": 3
+        },
+        "participant_roles": {
+          "green": "green",
+          "purple1": "solstice_finance_agent"
+        },
+        "callback_urls": {
+          "green": "${bindings.green-proxy.url}"
+        }
+      }
+    },
+    "green": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/officeqa-agentbeats/refs/heads/main/amber/amber-manifest-green.json5",
+      "config": {}
+    },
+    "solstice_finance_agent": {
+      "manifest": "https://raw.githubusercontent.com/Solasticeaistudio/solstice-agentbeats/master/amber-manifest-finance.json5",
+      "config": {
+        "agentbeats_llm_model": "${config.solstice_finance_agent_agentbeats_llm_model}",
+        "anthropic_api_key": "${config.solstice_finance_agent_anthropic_api_key}",
+        "google_api_key": "${config.solstice_finance_agent_google_api_key}",
+        "openai_api_key": "${config.solstice_finance_agent_openai_api_key}",
+        "pinecone_api_key": "${config.solstice_finance_agent_pinecone_api_key}"
+      }
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#solstice_finance_agent.a2a"
+    },
+    {
+      "to": "#green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "green-proxy"
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "green": "019ca14f-cbd5-7a71-9b2b-d43db92a09e1",
+      "solstice_finance_agent": "019d1711-25fe-7b83-97aa-dc5ae0d8ab15"
+    }
+  }
+}
