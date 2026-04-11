@@ -1,0 +1,22 @@
+{
+  "image_digests": {
+    "/gateway": "ghcr.io/rdi-foundation/agentbeats-gateway@sha256:3f9976889c598092dc4273312ec431cbc48bbe064ff65b5613425f4990bc1d4c",
+    "/green": "ghcr.io/andrew7234/officeqa-agentbeats@sha256:011b4986e7101a678279301d3d573211e763b65b72c847ce9d20b31afd64fe53",
+    "/officeqa_agent": "ghcr.io/soumya-batra/officeqa-agent@sha256:77a6bea9a8293a0c3a9ae29fe5ad0c3ef4469e0d829b55d83f038efd4f6e576a"
+  },
+  "manifest_digests": {
+    "/": "sha256:Q2o2YSaiolNoTpNYnqbtdhwC+e5TVNQSvPo8hY6fTLI=",
+    "/gateway": "sha256:55vdRwO+54k8WBZhh3nrN6Gn7cnk/+hm1dG+xt/GYSE=",
+    "/green": "sha256:eGlzVoX28i+b+uqGzcwo8/7tJze8Hc4m5NWu3OLa1fA=",
+    "/officeqa_agent": "sha256:KgNGs4uPe9AAr5a4GQs4GpO+6ZbyilnnWjQvrP8eZkI="
+  },
+  "timestamp": "2026-04-11T16:45:25Z",
+  "github_actions": {
+    "run_url": "https://github.com/RDI-Foundation/officeqa-agentbeats-leaderboard/actions/runs/24286927415",
+    "ref": "refs/pull/82/merge",
+    "sha": "6c7804c61829f3f25de61b6e28c9ca148e6270cf",
+    "repository_url": "https://github.com/RDI-Foundation/officeqa-agentbeats-leaderboard",
+    "workflow_ref": "RDI-Foundation/officeqa-agentbeats-leaderboard/.github/workflows/quick-submit.yml@refs/pull/82/merge",
+    "workflow_sha": "6c7804c61829f3f25de61b6e28c9ca148e6270cf"
+  }
+}
