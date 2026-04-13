@@ -1,0 +1,85 @@
+{
+  "manifest_version": "0.1.0",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "corelink_finance_agent_nebius_api_key": {
+        "type": "string",
+        "secret": true
+      },
+      "corelink_finance_agent_nebius_base_url": {
+        "type": "string",
+        "default": "https://api.studio.nebius.ai/v1/"
+      },
+      "corelink_finance_agent_tavily_api_key": {
+        "type": "string",
+        "secret": true
+      }
+    },
+    "required": [
+      "corelink_finance_agent_nebius_api_key"
+    ],
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.3/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "dataset_url": "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv",
+          "num_questions": 246,
+          "difficulty": "all",
+          "tolerance": 0,
+          "max_concurrent": 10,
+          "run_id": 3
+        },
+        "participant_roles": {
+          "green": "green",
+          "purple1": "corelink_finance_agent"
+        },
+        "callback_urls": {}
+      }
+    },
+    "green": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/officeqa-agentbeats/refs/heads/main/amber/amber-manifest-green.json5",
+      "config": {}
+    },
+    "corelink_finance_agent": {
+      "manifest": "https://raw.githubusercontent.com/krishna-dhulipalla/CoreLink-AI/main/amber-manifest.json5",
+      "config": {
+        "nebius_api_key": "${config.corelink_finance_agent_nebius_api_key}",
+        "nebius_base_url": "${config.corelink_finance_agent_nebius_base_url}",
+        "tavily_api_key": "${config.corelink_finance_agent_tavily_api_key}"
+      }
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#corelink_finance_agent.a2a"
+    },
+    {
+      "to": "#green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true
+    },
+    {
+      "to": "#corelink_finance_agent.proxy",
+      "from": "#gateway.proxy",
+      "weak": true
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "green": "019ca14f-cbd5-7a71-9b2b-d43db92a09e1",
+      "corelink_finance_agent": "019d1984-70ad-75f1-a1a0-1104a251cac6"
+    }
+  }
+}
