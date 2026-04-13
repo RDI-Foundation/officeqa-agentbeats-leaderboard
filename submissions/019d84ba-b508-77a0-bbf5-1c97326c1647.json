@@ -1,0 +1,97 @@
+{
+  "manifest_version": "0.1.0",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "officeqa_agent_GOOGLE_API_KEY": {
+        "type": "string",
+        "description": "Your Gemini AI Studio API Key"
+      },
+      "officeqa_agent_GOOGLE_API_KEY_2": {
+        "type": "string",
+        "description": "Your backup Gemini API Key 2"
+      },
+      "officeqa_agent_GOOGLE_API_KEY_3": {
+        "type": "string",
+        "description": "Your backup Gemini API Key 3"
+      },
+      "officeqa_agent_LANGSMITH_API_KEY": {
+        "type": "string",
+        "description": "LangSmith Tracing API Key"
+      },
+      "officeqa_agent_MODEL_ID": {
+        "type": "string",
+        "description": "LLM model identifier (e.g., gemini-3-flash-preview)"
+      },
+      "officeqa_agent_ORCH_MODEL_ID": {
+        "type": "string",
+        "description": "Orchestrator LLM model (e.g., gemini-3.1-pro-preview)"
+      }
+    },
+    "required": [
+      "officeqa_agent_GOOGLE_API_KEY",
+      "officeqa_agent_MODEL_ID",
+      "officeqa_agent_ORCH_MODEL_ID"
+    ],
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.3/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "dataset_url": "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv",
+          "num_questions": 5,
+          "difficulty": "all",
+          "tolerance": 0,
+          "max_concurrent": 10,
+          "run_id": 3
+        },
+        "participant_roles": {
+          "green": "green",
+          "purple1": "officeqa_agent"
+        },
+        "callback_urls": {}
+      }
+    },
+    "green": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/officeqa-agentbeats/refs/heads/main/amber/amber-manifest-green.json5",
+      "config": {}
+    },
+    "officeqa_agent": {
+      "manifest": "https://raw.githubusercontent.com/MDadopoulos/VeritasX/main/workspace/amber-manifest.json5",
+      "config": {
+        "GOOGLE_API_KEY": "${config.officeqa_agent_GOOGLE_API_KEY}",
+        "GOOGLE_API_KEY_2": "${config.officeqa_agent_GOOGLE_API_KEY_2}",
+        "GOOGLE_API_KEY_3": "${config.officeqa_agent_GOOGLE_API_KEY_3}",
+        "LANGSMITH_API_KEY": "${config.officeqa_agent_LANGSMITH_API_KEY}",
+        "MODEL_ID": "${config.officeqa_agent_MODEL_ID}",
+        "ORCH_MODEL_ID": "${config.officeqa_agent_ORCH_MODEL_ID}"
+      }
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#officeqa_agent.a2a"
+    },
+    {
+      "to": "#green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "green": "019ca14f-cbd5-7a71-9b2b-d43db92a09e1",
+      "officeqa_agent": "019d849a-db00-79a2-bd01-f33a0da795b4"
+    }
+  }
+}
