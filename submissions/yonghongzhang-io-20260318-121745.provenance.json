@@ -1,0 +1,17 @@
+{
+  "image_digests": {
+    "green-agent": "ghcr.io/arnavsinghvi11/officeqa-judge@sha256:ec0a09fa4a4be4219b890689da3a8d05dc6613365a231d0df1d3761b97afcb02",
+    "officeqa_agent": "ghcr.io/yonghongzhang-io/purple-agent-officeqa@sha256:b08ae0c286d22ccbe7420b5ed5c2787de7e7b982911927b53fe5bde48b3569af",
+    "agentbeats-client": "ghcr.io/agentbeats/agentbeats-client@sha256:13dfe3ef4e583a80e7ce2fe3becd0ce3b879841368a7f4fa40b6ebbabeeb014e"
+  },
+  "timestamp": "2026-03-18T12:17:45Z",
+  "github_actions": {
+    "run_url": "https://github.com/yonghongzhang-io/officeqa-agentbeats-leaderboard/actions/runs/23244267625",
+    "run_logs_url": "https://api.github.com/repos/yonghongzhang-io/officeqa-agentbeats-leaderboard/actions/runs/23244267625/logs",
+    "ref": "refs/heads/submission-purple-officeqa",
+    "sha": "21c62531a4038869f064a058f82cb6785e6ba6b7",
+    "repository_url": "https://github.com/yonghongzhang-io/officeqa-agentbeats-leaderboard",
+    "workflow_ref": "yonghongzhang-io/officeqa-agentbeats-leaderboard/.github/workflows/run-scenario.yml@refs/heads/submission-purple-officeqa",
+    "workflow_sha": "21c62531a4038869f064a058f82cb6785e6ba6b7"
+  }
+}
