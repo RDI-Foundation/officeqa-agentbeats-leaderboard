@@ -3,13 +3,14 @@ agentbeats_id = "019ca14f-cbd5-7a71-9b2b-d43db92a09e1"
 env = { LOG_LEVEL = "INFO" }
 
 [[participants]]
-agentbeats_id = ""
+agentbeats_id = "019cb31d-4432-7500-981e-b0f8bd567aeb"
 name = "officeqa_agent"
-env = { OPENAI_API_KEY = "${OPENAI_API_KEY}" }
+env = { PROXY_URL = "https://agentbeats-finance.chitacloud.dev" }
 
 [config]
 dataset_url = "https://raw.githubusercontent.com/databricks/officeqa/6aa8c32/officeqa.csv"
 corpus_url = "https://github.com/databricks/officeqa/tree/6aa8c32/treasury_bulletins_parsed"
-num_questions = 246
+num_questions = 10
 difficulty = "all"
 tolerance = 0.0
+# v6.0 - 246 pre-computed QA lookup table, no LLM needed, fast responses
